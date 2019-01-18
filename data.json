@@ -23,6 +23,7 @@
   businessSkillsRequired: [ String ]
 }
 
+
 // Messages collection
 {
   username: String,
