@@ -1,0 +1,78 @@
+// 1 document for each user - ALL the info in here. CEO and CTO profiles are embedded documents in the MongoDB database.
+// Have a boolean to track if they are a CTO or a CEO, and just have every field there in the document.
+// Could gather people into collections while they sign up, so that you have a list of CEOs and CTOs separate from the individual profiles.
+// Tech skills - do we need some sort of sliding scale, or do we trust people to be capable to work in this tech on their own?
+
+// User collection
+{
+  username: String, REQUIRED
+  email: String, REQUIRED
+  location: String, REQUIRED
+  gender: String, REQUIRED
+  bio: String, REQUIRED
+  pic: String, REQUIRED (but can choose from avatars we have uploaded)
+  CEO: Boolean, REQUIRED (default is false)
+  CTO: Boolean, REQUIRED (default is false)
+  // CEO profile fields
+  myBusinessStage: String,
+  myBusinessSkills: [ String ],
+  techSkillsRequired: [ String ],
+  equityOffered: Number,
+  // CTO profile fields
+  myTechSkills: [ String ],
+  businessSkillsRequired: [ String ]
+}
+
+// Messages collection
+{
+  username: String,
+  message: String,
+  recipient: String,
+  timeSent: Date
+}
+
+// ALTERNATE DATA STRUCTURES (unused)
+// networking = {
+//   bio: String, REQUIRED
+//   picture: String, (store in Cloudinary if we need a user profile picture)
+// }
+// If a user signs up as wanting a co-founder, their role, skills, etc. should be required. Does this need to be a separate collection?
+// Where would we put the information about what equity we are offering?
+// Could people put up more than one business profiles?
+// A user could post multiple startup ideas as a CEO and/or one CTO profile.
+// Everyone is networking, but you can sign up for further things.
+// Are you available to all the users on the site if you are just networking?
+// ceos = {
+//   skillsIHave: [ String ],
+//   businessStage: String,
+//   skillsINeed: [ String ],
+// }
+
+// ctos = {
+//   skillsIHave: [ String ],
+//   skillsINeed: [ String ],
+// }
+
+
+// ALTERNATE
+// Have several collections and link a user profile to a CEO or CTO profile.
+// The same user could have both a ceo and a cto profile.
+
+// To sign up you must be a user
+// Users Collection
+// user = {
+//   username: String, REQUIRED
+//   email: String, REQUIRED
+//   hereFor: String, (find a co-founder/networking) REQUIRED
+// }
+
+// CEOs Collection
+// ceos = {
+//   user: ObjectId
+
+// }
+
+// CTOs Collection
+// cto = {
+//   user: ObjectId
+// }
