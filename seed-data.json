@@ -1,0 +1,30 @@
+// dummy data made up to test connection
+
+
+{
+    "username": "David - the hoff - Hasselhoff",
+    "email": "DHOFF@hoffenator.com",
+    "location": "Beach",
+    "gender": "male",
+    "bio": "Good at running and jumping. Good at driving cars that don't need me to drive them. Not so good at acting or singing",
+    "pic": "david-hasselhoff.jpeg", 
+    "readyToMatch": true,
+    "CEO": true, 
+    "CTO": false,
+    
+    "myBusinessStage": "It's all about me really. I'm ready set go!",
+    "myBusinessSkills": [ 
+        "running", "jumping", "singing", "entertaining"
+     ],
+    "techSkillsRequired": [ "JavaScript", "DB Engineer" ],
+    "equityOffered": 19999999,
+   
+    "myTechSkills": [ "not much" ],
+    "businessSkillsRequired": [ "I've got all these covered" ]
+    "connections": [ {
+        "objectKey1": "objectValue1",
+        "objectKey2": "objectValue2",
+
+    } ]
+  
+}
