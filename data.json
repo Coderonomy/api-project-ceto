@@ -4,15 +4,18 @@
 // Tech skills - do we need some sort of sliding scale, or do we trust people to be capable to work in this tech on their own?
 
 // User collection
+// Split this into two collections, CEOs and CTOs?
+// Networkers: if they are there to network only
 {
-  username: String, REQUIRED
-  email: String, REQUIRED
+  username: String, REQUIRED - come from oauth
+  email: String, REQUIRED - come from oauth
   location: String, REQUIRED
   gender: String, REQUIRED
   bio: String, REQUIRED
-  pic: String, REQUIRED (but can choose from avatars we have uploaded)
-  CEO: Boolean, REQUIRED (default is false)
-  CTO: Boolean, REQUIRED (default is false)
+  pic: String, REQUIRED (but can choose from avatars we have uploaded),
+  readyToMatch: Boolean (if they want a co-founder this is true, if they are there to network this is false. They will have access to the messaging system.)
+  CEO: Boolean, REQUIRED (default is false) - which path they chose
+  CTO: Boolean, REQUIRED (default is false) - which path they chose
   // CEO profile fields
   myBusinessStage: String,
   myBusinessSkills: [ String ],
@@ -21,6 +24,7 @@
   // CTO profile fields
   myTechSkills: [ String ],
   businessSkillsRequired: [ String ]
+  connections: [ ObjectIds ]
 }
 
 
