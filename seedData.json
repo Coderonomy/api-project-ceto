@@ -1,6 +1,3 @@
-// dummy data made up to test connection
-
-
 {
     "username": "David - the hoff - Hasselhoff",
     "email": "DHOFF@hoffenator.com",
@@ -20,11 +17,10 @@
     "equityOffered": 19999999,
    
     "myTechSkills": [ "not much" ],
-    "businessSkillsRequired": [ "I've got all these covered" ]
-    "connections": [ {
-        "objectKey1": "objectValue1",
-        "objectKey2": "objectValue2",
+    "businessSkillsRequired": [ "I've got all these covered" ],
+    "connections": [
+         "1",
+         "2"
 
-    } ]
-  
+    ]
 }

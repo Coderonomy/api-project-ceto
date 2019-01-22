@@ -1,7 +1,11 @@
 const express = require('express');
-// const dummyData = require('./dummyData')
+const seedData = require('./seedData')
 const cors = require('cors')
 const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/ceto')
+const User = require('./models/User')
+
 
 const app = new express();
 const port = 5000;
@@ -14,9 +18,16 @@ app.get('/' ,(req,res) => {
 })
 
 app.get('/data' ,(req,res) => {
-    res.send(dummyData)
+    res.send(seedData)
 })
 
+app.post('/user', (req,res) => {
+    const {username, email, location, gender, bio, pic, readyToMatch, CEO, CTO, myBusinessStage, myBusinessSkills, techSkillsRequired, equityOffered, myTechSkills, businessSkillsRequired, connections} = req.body
+    User.create({username, email, location, gender, bio, pic, readyToMatch, CEO, CTO, myBusinessStage, myBusinessSkills, techSkillsRequired, equityOffered, myTechSkills, businessSkillsRequired, connections},(err, doc) => {
+        console.log(err, doc)
+        return res.send(doc)
+    })
+})
 
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
