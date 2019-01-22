@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    
+
     id: Number,
     username: String,
     email: String,
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     
     myTechSkills: [ String ],
     businessSkillsRequired: [ String ],
-    connections: [ ObjectIds ]
+    connections: [ String ]
 });
 
 module.exports = mongoose.model('User', userSchema);
