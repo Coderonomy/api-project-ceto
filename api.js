@@ -14,7 +14,8 @@ mongoose.connection.on('error', () => {
 
 
 const app = new express();
-const port = 5000;
+const port = process.env.PORT || 5000; // look for the process.env.PORT first, otherwise set it to 5000
+
 app.use(cors())
 app.use(express.json());
 
