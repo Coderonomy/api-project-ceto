@@ -1,10 +1,16 @@
 const express = require('express');
-const seedData = require('./seedData')
 const cors = require('cors')
 const mongoose = require('mongoose');
+const router = express.Router();
 
-mongoose.connect('mongodb://localhost:27017/ceto')
-const User = require('./models/User')
+mongoose.connect('mongodb://localhost:27017/ceto');
+mongoose.connection.on('connected', () => {
+  console.log('connected to mongod');
+});
+
+mongoose.connection.on('error', () => {
+    console.log('failed to connect to mongod');
+});
 
 
 const app = new express();
@@ -13,21 +19,6 @@ app.use(cors())
 app.use(express.json());
 
 
-app.get('/' ,(req,res) => {
-    res.send('api is live')
-})
-
-app.get('/data' ,(req,res) => {
-    res.send(seedData)
-})
-
-app.post('/user', (req,res) => {
-    const {username, email, location, gender, bio, pic, readyToMatch, CEO, CTO, myBusinessStage, myBusinessSkills, techSkillsRequired, equityOffered, myTechSkills, businessSkillsRequired, connections} = req.body
-    User.create({username, email, location, gender, bio, pic, readyToMatch, CEO, CTO, myBusinessStage, myBusinessSkills, techSkillsRequired, equityOffered, myTechSkills, businessSkillsRequired, connections},(err, doc) => {
-        console.log(err, doc)
-        return res.send(doc)
-    })
-})
-
+app.use(require('./controllers'));
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));

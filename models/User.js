@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const userSchema = new mongoose.Schema({
 
     id: Number,
@@ -12,7 +11,7 @@ const userSchema = new mongoose.Schema({
     readyToMatch: Boolean, 
     CEO: Boolean,
     CTO: Boolean,
-   
+    
     myBusinessStage: String,
     myBusinessSkills: [ String ],
     techSkillsRequired: [ String ],
