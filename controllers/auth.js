@@ -23,7 +23,9 @@ router.get('/google', passport.authenticate('google',{
 
 //callback routes for google to redirect to
 router.get('/google/redirect',passport.authenticate('google'), (req, res) => {
-    res.send('you reached a callback URI')
+    // res.send(req.user)
+    res.redirect('/profile')
+    
 // check if user is in DB 
 // if user is true in DB, redirect to community/profile
 //else send to sign up form
