@@ -1,0 +1,14 @@
+{
+  "name": "ceto",
+  "alias": "ceto",
+  "env": {
+    "DB_URL": "mongodb://projectCeto:project4Ceto@ds123454.mlab.com:23454/ceto"
+  },
+  "version": 2,
+  "builds" : [
+    { "src": "api.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "api.js" }
+  ]
+}
