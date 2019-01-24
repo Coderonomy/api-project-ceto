@@ -1,2 +1,5 @@
 .env
 node_modules
+views
+home.ejs
+login.ejs
