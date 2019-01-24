@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors')
 const mongoose = require('mongoose');
@@ -6,7 +7,7 @@ const auth = require('./controllers/auth');
 const passportSetup = require('./config/passportSetup');
 
 
-mongoose.connect('mongodb://localhost:27017/ceto',{ useNewUrlParser: true });
+mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true });
 mongoose.connection.on('connected', () => {
   console.log('connected to mongod');
 });
