@@ -16,10 +16,12 @@ mongoose.connection.on('error', () => {
 
 
 const app = new express();
-const port = 5000;
+
+const port = process.env.PORT || 5000;
 
 //ejs 
 app.set('view engine', 'ejs')
+
 
 app.use(cors())
 app.use(express.json());
