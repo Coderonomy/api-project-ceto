@@ -3,10 +3,18 @@ const router = express.Router();
 
 const User = require('../models/User')
 
+
+//testing api
 router.get('/' ,(req,res) => {
     res.send('api is live in public')
 })
 
+// auth login 
+router.get('/login', (req,res) =>{
+    res.render('login')
+})
+
+//DB post test
 router.post('/user', (req,res) => {
     const {
         username, 
