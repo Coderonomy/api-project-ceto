@@ -20,8 +20,12 @@
   "homepage": "https://github.com/Coderonomy/api-project-ceto#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "mongoose": "^5.4.5"
+    "mongoose": "^5.4.5",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
