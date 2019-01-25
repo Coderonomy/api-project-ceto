@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const serverless = require('serverless-http');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const router = express.Router();
@@ -20,10 +21,6 @@ mongoose.connection.on('error', () => {
 //   dbURI: process.env.MONGODB_URI
 // }
 
-
-//initialize passport
-
-
 const app = new express();
 const port = process.env.PORT || 5000;
 
@@ -31,15 +28,14 @@ const port = process.env.PORT || 5000;
 app.set('view engine', 'ejs')
 
 //encrypts cookie for 24h
-app.use(cookieSession({
-  maxAge: 24*60*60*1000,
-  keys: process.env.COOKIE_KEY
-}))
+// app.use(cookieSession({
+//   maxAge: 24*60*60*1000,
+//   keys: process.env.COOKIE_KEY
+// }))
 
 // initialize passport
 app.use(passport.initialize())
 app.use(passport.session())
-
 
 app.use(cors())
 app.use(express.json());
@@ -47,4 +43,6 @@ app.use(express.json());
 app.use('/auth', auth);
 app.use(require('./controllers'));
 
-app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+// app.listen(port, () => console.log(`listening on http://localhost:${port}`));
+
+module.exports.handler = serverless(app);
