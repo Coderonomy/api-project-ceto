@@ -16,10 +16,6 @@ mongoose.connection.on('error', () => {
     console.log('failed to connect to mongod');
 });
 
-// mongodb: {
-//   dbURI: process.env.MONGODB_URI
-// }
-
 
 //initialize passport
 
