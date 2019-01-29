@@ -1,11 +1,11 @@
-// 1 document for each user - ALL the info in here. CEO and CTO profiles are embedded documents in the MongoDB database.
-// Have a boolean to track if they are a CTO or a CEO, and just have every field there in the document.
-// Could gather people into collections while they sign up, so that you have a list of CEOs and CTOs separate from the individual profiles.
-// Tech skills - do we need some sort of sliding scale, or do we trust people to be capable to work in this tech on their own?
+// All users are created when they are auth with Google OAuth.
 
-// User collection
-// Split this into two collections, CEOs and CTOs?
-// Networkers: if they are there to network only
+// An incomplete user has auth'd with Oauth, saved into db and nothing else
+
+// A 'networker' user had entered the compulsory data only. A networked will not receive the full CEO and CTO users data.
+
+// A CEO/CTO has completed the entire data applicable to them
+
 {
   username: String, REQUIRED - come from oauth
   email: String, REQUIRED - come from oauth
