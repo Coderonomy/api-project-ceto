@@ -7,6 +7,7 @@ const auth = require('./controllers/auth');
 const passportSetup = require('./config/passportSetup');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+// const ejs = require('ejs');
 
 mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true });
 mongoose.connection.on('connected', () => {
@@ -16,15 +17,11 @@ mongoose.connection.on('error', () => {
     console.log('failed to connect to mongod');
 });
 
-
-//initialize passport
-
-
 const app = new express();
 const port = process.env.PORT || 5000;
 
 //ejs 
-app.set('view engine', 'ejs')
+// app.set('view engine', 'ejs')
 
 //encrypts cookie for 24h
 app.use(cookieSession({
@@ -36,11 +33,15 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 app.use(cors())
 app.use(express.json());
 
 app.use('/auth', auth);
 app.use(require('./controllers'));
+
+app.get('/google131742fa08bd8639.html', (req, res) => {
+  res.sendFile(`${__dirname}/google131742fa08bd8639.html`)
+});
+
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));

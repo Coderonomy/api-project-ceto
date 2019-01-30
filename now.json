@@ -1,8 +1,11 @@
 {
   "name": "ceto",
-  "alias": "ceto",
+  "alias": "projectceto",
   "env": {
-    "DB_URL": "mongodb://projectCeto:project4Ceto@ds123454.mlab.com:23454/ceto"
+    "DB_URL": "mongodb://projectCeto:project4Ceto@ds123454.mlab.com:23454/ceto",
+    "GOOGLE_CLIENTID": "252563715372-gth723bdklga3j9p48bkfhjp72hb60n4.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET":"i8xCYYT5w0McT5vlbEJepCjk",
+    "COOKIE_KEY":"projectcetofff"
   },
   "version": 2,
   "builds" : [
