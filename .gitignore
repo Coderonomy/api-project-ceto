@@ -1,5 +1,4 @@
 .env
-/node_modules
-/views
-home.ejs
-login.ejs
+node_modules
+//views
+now.json

@@ -3,7 +3,12 @@ const passport = require('passport');
 
 // auth login 
 router.get('/login', (req,res) =>{
-    res.render('login')
+    //local engine ejs
+    // res.render('login')
+    
+    // deployment
+    res.send('login')
+
 })
 
 //auth logout 
