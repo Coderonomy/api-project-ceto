@@ -148,14 +148,14 @@ this might take a minute. check your now.sh account.
 
 ** Databas Setup**
 
-All users are created when they are auth with Google OAuth.
+- All users are created when they are auth with Google OAuth.
 
-A 'blank' user has auth'd with Oauth, saved into db and nothing else
+- A 'blank' user has auth'd with Oauth, saved into db and nothing else
 
-A 'networker' user has entered the compulsory data only. A networker will not be able to view the full CEO and CTO users data, nor can they access the messaging.
+- A 'networker' user has entered the compulsory data only. A networker will not be able to view the full CEO and CTO users data, nor can they access the messaging.
 
-A CEO/CTO has completed the entire data applicable to their respective selection and can access the messaging.
-
+- A CEO/CTO has completed the entire data applicable to their respective selection and can access the messaging.
+```
 {
   // OAuth data. All Fields REQUIRED.
   username: String, REQUIRED (from oauth)
@@ -208,4 +208,4 @@ A CEO/CTO has completed the entire data applicable to their respective selection
     text: String,
     timeSent: dateTime
     }
- 
+ ```
