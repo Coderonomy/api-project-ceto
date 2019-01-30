@@ -146,7 +146,7 @@ this might take a minute. check your now.sh account.
 
 
 
-** Databas Setup**
+** Database Setup**
 
 - All users are created when they are auth with Google OAuth.
 
