@@ -21,7 +21,12 @@ router.get('/google', passport.authenticate('google',{
     ]
 }) )
 
-//callback routes for google to redirect to
+
+
+
+
+
+// callback routes for google to redirect to
 // check if user is in DB - handled in passportSetup.js for the Google credentials only
 
 router.get('/google/redirect',passport.authenticate('google'), (req, res) => {

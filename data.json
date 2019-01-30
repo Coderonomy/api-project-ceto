@@ -1,18 +1,88 @@
 // All users are created when they are auth with Google OAuth.
 
-// An incomplete user has auth'd with Oauth, saved into db and nothing else
+// A 'blank' user has auth'd with Oauth, saved into db and nothing else
 
-// A 'networker' user had entered the compulsory data only. A networked will not receive the full CEO and CTO users data.
+// A 'networker' user has entered the compulsory data only. A networker will not be able to view the full CEO and CTO users data, nor can they access the messaging.
 
-// A CEO/CTO has completed the entire data applicable to them
+// A CEO/CTO has completed the entire data applicable to their respective selection and can access the messaging.
 
 {
-  username: String, REQUIRED - come from oauth
-  email: String, REQUIRED - come from oauth
-  location: String, REQUIRED
-  gender: String, REQUIRED
-  bio: String, REQUIRED
-  pic: String, REQUIRED (but can choose from avatars we have uploaded),
+  // OAuth data. All Fields REQUIRED.
+  username: String, REQUIRED (from oauth)
+  email: String, REQUIRED - (from oauth)
+  googleID: string, Required - (form oauth)
+
+// Compulsory app data. All Fileds REQUIRED
+  isCeo: bool,
+  isCto: bool,
+  isNetworker: bool,
+  location: String, 
+  openToRemoteConnections: bool 
+  genderIdentity: String, 
+  bio: String, 
+  pic: String,
+
+  ctoSpecifics: {
+    techSkills: string, REQ
+    otherTech: string,
+    skillsRequired: string, REQ
+    techLevel: string, REQ
+    gitHubLink: string,
+    stackOverflowLink: string,
+    codePenLink: string,
+    twitterLink: string,
+    mediumLink: string,
+    businessStage: string, REQ
+    businessBio: string, REQ
+    desiredStartUpStage: string, REQ
+  },
+
+  ceoSpecifics: {
+    businessSkills: string, REQ
+    skillsRequired: string, REQ
+    businessLevel: string, REQ
+    linkedinLink: string,
+    twitterLink: string,
+    mediumLinke: string,
+    investmentStatus: string, REQ
+    equityShare: string, REQ
+    businessStage: string, REQ
+    businessBio: string, REQ
+    desiredStartUpStage: string, REQ
+  },
+
+  message: {
+    blockedUsers: string (userIDs),
+    to: String,
+    from: String,
+    text: String,
+    timeSent: dateTime
+    }
+ 
+
+
+
+
+
+
+
+
+
+  // },
+  // {
+  //   username: String,
+  //   message: String,
+  //   recipient: String,
+  //   timeSent: Date
+  // }
+
+
+
+
+
+
+
+
   readyToMatch: Boolean (if they want a co-founder this is true, if they are there to network this is false. They will have access to the messaging system.)
   CEO: Boolean, REQUIRED (default is false) - which path they chose
   CTO: Boolean, REQUIRED (default is false) - which path they chose
