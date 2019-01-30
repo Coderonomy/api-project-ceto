@@ -1,26 +1,50 @@
 {
-    "username": "David - the hoff - Hasselhoff",
-    "email": "DHOFF@hoffenator.com",
-    "location": "Beach",
-    "gender": "male",
-    "bio": "Good at running and jumping. Good at driving cars that don't need me to drive them. Not so good at acting or singing",
-    "pic": "david-hasselhoff.jpeg", 
-    "readyToMatch": true,
-    "CEO": true, 
-    "CTO": false,
-    
-    "myBusinessStage": "It's all about me really. I'm ready set go!",
-    "myBusinessSkills": [ 
-        "running", "jumping", "singing", "entertaining"
-     ],
-    "techSkillsRequired": [ "JavaScript", "DB Engineer" ],
-    "equityOffered": 19999999,
-   
-    "myTechSkills": [ "not much" ],
-    "businessSkillsRequired": [ "I've got all these covered" ],
-    "connections": [
-         "1",
-         "2"
+	"googleId": "googleID123" ,
+    "username": "Johnn",
+    "email": "johnnn@gmail.com",
 
-    ]
+    "isCeo": "false",
+    "isCto": "false",
+    "isNetworker": "false",
+    "location": "Melbourne",
+    "openToRemoteConnections": "false", 
+    "genderIdentity": "Non-bindary", 
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",
+    "pic": "profilepic.jpeg",
+    
+    "ctoSpecifics": {
+        "techSkills": [ "devops", "JavaScript pro", "web applications" ],
+        "otherTech": [ "ruby", "ruby on rails", "python" ],
+        "skillsRequired": [ "recruitment", "sales", "market knowledge", "speling" ],
+        "techLevel": "mid",
+        "gitHubLink": "a",
+        "stackOverflowLink": "a",
+        "codePenLink": "a",
+        "twitterLink": "a",
+        "mediumLink": "a",
+        "businessStage": "Idea",
+        "businessBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "desiredStartUpStage": "anything is cool"
+    },
+    
+    "ceoSpecifics": {
+        "businessSkills": [ "sales", "finance", "recruitment" ],
+        "skillsRequired": [ "programming", "data science" ],
+    	"businessLevel": "mid",
+        "gitHubLink": "a",
+        "stackOverflowLink": "a",
+        "codePenLink": "a",
+        "twitterLink": "a",
+        "mediumLink": "a",
+        "businessStage": "a",
+        "businessBio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+        "desiredStartUpStage": "Business Plan Mapped"
+    },
+    "message": {
+        "blockedUsers": [ "usergoogleID3894820840248" ],
+        "to": "usergoogleID8201124120481241",
+        "from": "usergoogleID8302382038",
+        "text": "Hey there, are you interested in co-founding with me?",
+        "timeSent": "01/30/2019"
+        }
 }

@@ -30,14 +30,14 @@ passport.use(
                 //already have user
                 console.log(`already have user ${currentUser.username}`)
                 done(null,currentUser)
-            }else {
+            } else {
                 // create user in our DB
                 // console.log(profile)
                 new User({
                     username: profile.name.familyName,
                     googleId: profile.id,
                     email: profile.emails[0].value,
-                    gender: profile.gender
+                    // gender: profile.gender
                 }).save().then((newUser) => { 
                     console.log(`new user created ${newUser}`)
                     done(null,newUser)

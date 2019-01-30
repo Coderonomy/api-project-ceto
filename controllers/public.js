@@ -17,43 +17,61 @@ router.get('/login', (req,res) =>{
 //DB post test
 router.post('/user', (req,res) => {
     const {
-        username, 
-        email, 
-        location, 
-        gender, 
-        bio, 
-        pic, 
-        readyToMatch, 
-        CEO, 
-        CTO, 
-        myBusinessStage, 
-        myBusinessSkills, 
-        techSkillsRequired, 
-        equityOffered, 
-        myTechSkills, 
-        businessSkillsRequired, 
-        connections} = req.body
+        googleID,
+        username,
+        email,
+        isCeo,
+        isCto,
+        isNetworker,
+        location,
+        openToRemoteConnections, 
+        genderIdentity, 
+        bio,
+        pic,
+        ctoSpecifics,
+        ceoSpecifics,
+        message
+    } = req.body
 
     User.create({
-        username, 
-        email, 
-        location, 
-        gender, 
-        bio, 
-        pic, 
-        readyToMatch, 
-        CEO, 
-        CTO, 
-        myBusinessStage, 
-        myBusinessSkills, 
-        techSkillsRequired, 
-        equityOffered, 
-        myTechSkills, 
-        businessSkillsRequired, 
-        connections},(err, doc) => {
+        googleID,
+        username,
+        email,
+        isCeo,
+        isCto,
+        isNetworker,
+        location,
+        openToRemoteConnections, 
+        genderIdentity, 
+        bio,
+        pic,
+        ctoSpecifics,
+        ceoSpecifics,
+        message 
+    },(err, doc) => {
         console.log(err, doc)
         return res.send(doc)
     })
 })
 
 module.exports = router;
+
+
+
+// previous data fields:
+        // username, 
+        // email, 
+        // location, 
+        // gender, 
+        // bio, 
+        // pic, 
+        // readyToMatch, 
+        // CEO, 
+        // CTO, 
+        // myBusinessStage, 
+        // myBusinessSkills, 
+        // techSkillsRequired, 
+        // equityOffered, 
+        // myTechSkills, 
+        // businessSkillsRequired, 
+        // connections 
