@@ -31,7 +31,7 @@ passport.use(
                 console.log(`already have user ${currentUser.username}`)
                 done(null,currentUser)
             }else {
-                //create user in our DB
+                // create user in our DB
                 // console.log(profile)
                 new User({
                     username: profile.name.familyName,
