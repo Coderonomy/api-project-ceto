@@ -143,3 +143,69 @@ followed by
 now && now alias
 ```
 this might take a minute. check your now.sh account. 
+
+
+
+** Databas Setup**
+
+All users are created when they are auth with Google OAuth.
+
+A 'blank' user has auth'd with Oauth, saved into db and nothing else
+
+A 'networker' user has entered the compulsory data only. A networker will not be able to view the full CEO and CTO users data, nor can they access the messaging.
+
+A CEO/CTO has completed the entire data applicable to their respective selection and can access the messaging.
+
+{
+  // OAuth data. All Fields REQUIRED.
+  username: String, REQUIRED (from oauth)
+  email: String, REQUIRED - (from oauth)
+  googleID: string, Required - (form oauth)
+
+// Compulsory app data. All Fileds REQUIRED
+  isCeo: bool,
+  isCto: bool,
+  isNetworker: bool,
+  location: String, 
+  openToRemoteConnections: bool 
+  genderIdentity: String, 
+  bio: String, 
+  pic: String,
+
+  ctoSpecifics: {
+    techSkills: string, REQ
+    otherTech: string,
+    skillsRequired: string, REQ
+    techLevel: string, REQ
+    gitHubLink: string,
+    stackOverflowLink: string,
+    codePenLink: string,
+    twitterLink: string,
+    mediumLink: string,
+    businessStage: string, REQ
+    businessBio: string, REQ
+    desiredStartUpStage: string, REQ
+  },
+
+  ceoSpecifics: {
+    businessSkills: string, REQ
+    skillsRequired: string, REQ
+    businessLevel: string, REQ
+    linkedinLink: string,
+    twitterLink: string,
+    mediumLinke: string,
+    investmentStatus: string, REQ
+    equityShare: string, REQ
+    businessStage: string, REQ
+    businessBio: string, REQ
+    desiredStartUpStage: string, REQ
+  },
+
+  message: {
+    blockedUsers: string (userIDs),
+    to: String,
+    from: String,
+    text: String,
+    timeSent: dateTime
+    }
+ 
