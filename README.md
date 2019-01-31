@@ -142,4 +142,42 @@ followed by
 ```
 now && now alias
 ```
-this might take a minute. check your now.sh account. 
+this might take a minute. check your now.sh account.
+
+# Data Structure
+
+General User (networker): all the general user form fields will be required using HTML form validation, so that the submit button won't work unless they are all filled out. This means that if any are filled out then they will all be filled out, so we only need to check one field when we get back from Google Auth
+CEO/CTO: can't submit until the minimum fields are filled out - but there are only a few of those so can do that on the HTML side as well.
+
+Google Auth - some data fields come back from Google Auth. If the user exists in the database, the API checks if any of the user form fields are filled out - if the are, then we know that all the general user forms are filled out.
+Potential cases:
+- user doesn't exist in the database, so they are saved to the database and sent to the Sign Up form
+- user exists in the database BUT the networking forms are not filled out, which probably means that something has gone wrong with the form, so they need to be redirected to the Sign Up form
+- user exists in the database, and their general user forms are filled out, and they are listed as being a networker, so they are redirected to their profile page OR the networking page (whatever we choose)
+- user exists in the database, and their general user forms are filled out, and they are listed as a CEO or CTO - if they tick this box then the minimum boxes will be filled out and before submit will work so this should be fine for them to see everything about everyone else
+
+Messages: take them out of the user objects and have a conversations collection and a messages collection, as per the below plan.
+Keep a list of blocked users in an individual users profile, and maybe flag those conversations as not allowed to happen?
+
+Conversation:
+{ id: 123
+  participants: ['john', 'marry'],
+}
+
+
+Message:
+{ sender: 'john', 
+  content: 'howdy', 
+  time_created: new Date(),
+  converstationId: 123
+},
+{ sender: 'marry', 
+  content: 'good u', 
+  time_created: new Date(),
+  converstationId: 123 
+},
+
+User Data: still no real reason to go either way as things are pretty flexible. Thoughts and opinions welcome.
+
+
+
