@@ -1,10 +1,11 @@
 require('dotenv').config();
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
 const mongoose = require('mongoose');
-const router = express.Router();
-const auth = require('./controllers/auth');
 const passportSetup = require('./config/passportSetup');
+const router = express.Router();
+const authRoutes = require('./controllers/authRoutes');
+const protectedRoutes = require('./controllers/protectedRoutes');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 // const ejs = require('ejs');
@@ -25,8 +26,10 @@ const port = process.env.PORT || 5000;
 
 //encrypts cookie for 24h
 app.use(cookieSession({
+  // name: 'session',
   maxAge: 24*60*60*1000,
-  keys: process.env.COOKIE_KEY
+  //keys must be in array or it wont pass
+  keys: [process.env.COOKIE_KEY]
 }))
 
 // initialize passport
@@ -36,7 +39,8 @@ app.use(passport.session())
 app.use(cors())
 app.use(express.json());
 
-app.use('/auth', auth);
+app.use('/auth', authRoutes);
+app.use('/protected', protectedRoutes);
 app.use(require('./controllers'));
 
 app.get('/google131742fa08bd8639.html', (req, res) => {
