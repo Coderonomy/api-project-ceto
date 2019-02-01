@@ -6,12 +6,12 @@ const User = require('../models/User')
 
 //testing api
 router.get('/' ,(req,res) => {
-    res.send('api is live in public')
+    res.send('home',{user:req.user})
 })
 
 // auth login 
 router.get('/login', (req,res) =>{
-    res.render('login')
+    res.send('login')
 })
 
 //DB post test

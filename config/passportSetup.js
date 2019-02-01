@@ -1,19 +1,19 @@
+require('dotenv').config() 
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const User = require('../models/User')
-require('dotenv').config() 
 
 //stores user id inside cookie
 passport.serializeUser((user,done) => {
-    done(null,user.id);
-})
+    done(null, user.id);
+});
 
 //finds id from cookie returned from browser
 passport.deserializeUser((id,done) => {
     User.findById(id).then((user) => {
-        done(null,id)
-    })
-})
+        done(null, user)
+    });
+});
 
 passport.use(
     new GoogleStrategy({
@@ -21,11 +21,11 @@ passport.use(
         callbackURL:'/auth/google/redirect',
         clientID: process.env.GOOGLE_CLIENTID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET
-
-    },(accessToken, refreshToken, profile, done)=>{
+    }, async (accessToken, refreshToken, profile, done)=>{
         
+        console.log('passport callback function fired')
         //check if user already exists in our DB
-        User.findOne({googleId:profile.id}).then((currentUser) => {
+       await User.findOne({googleId:profile.id}).then((currentUser) => {
             if (currentUser){
                 //already have user
                 console.log(`already have user ${currentUser.username}`)
