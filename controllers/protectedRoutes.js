@@ -19,22 +19,14 @@ router.get('/', isAuthed,(req, res) => {
     console.log('you are logged in ' + req.user.username)
 })
 
-// function allusers(User) {
-// User.find({}, function (err,users) {
-//     const name = users.map(x => x)
-//     res.json(users)
-// })
-
-
 
 router.get('/network', isAuthed,function (req,res) {
-    User.find({}, function (err,users) {
-    users.map
-        res.json(users[0].username)    
-    console.log(users[0].username)
+    // User.find({}, function (err,users) {
+    //     res.json(users[0].username)    
+    // console.log(users[0].username)
+    res.send('what up!? its yo network page!')
 
     })
-})
 
 
 // router.get('/completed-profile', (req, res) => {
