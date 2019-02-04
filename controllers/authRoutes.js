@@ -22,9 +22,9 @@ router.get('/google', passport.authenticate('google',{
     scope: ['profile', 'email']
 }) )
 
-router.get('/google/redirect',passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
+router.get('/google/redirect',passport.authenticate('google', { failureRedirect: `${process.env.REACT_FRONT_END}/login` }), (req, res) => {
     console.log(`you are logging in ${req.user.username}`)
-    return res.redirect(`${process.env.REACT_FRONT_END}/network`)
+    return res.redirect(`/protected/network`)
 })
 
     // res.send('you reached the callback URL')
