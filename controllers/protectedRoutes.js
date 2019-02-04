@@ -4,9 +4,10 @@ const User = require('../models/User')
 
 const isAuthed = (req, res, next) => {
     if (!req.user) {
+      console.log(req.header)
         console.log('not authed')
     //  res.status(403).send('not authed');
-     return res.redirect('auth/login')
+     return res.redirect('http://localhost:3000/login')
     } else {
         console.log('authorized')
         next();
@@ -28,12 +29,8 @@ router.get('/', isAuthed,(req, res) => {
 
 
 router.get('/network', isAuthed,function (req,res) {
-    User.find({}, function (err,users) {
-    users.map
-        res.json(users[0].username)    
-    console.log(users[0].username)
-
-    })
+    User.find({})
+    .then(doc => res.send(doc))
 })
 
 

@@ -4,7 +4,7 @@ const passport = require('passport');
 // auth login 
 router.get('/login', (req,res) =>{
     // local engine ejs
-    res.send('login',{user:req.user})
+    // res.send('login',{user:req.user})
     
     // deployment
     // res.send('login',{user:req.user})
@@ -13,7 +13,7 @@ router.get('/login', (req,res) =>{
 //auth logout 
 router.get('/logout',(req,res) =>{
     req.logout();
-    res.redirect('/')
+    res.redirect('http://localhost:3000/')
 })
 
 //auth with google
@@ -24,7 +24,7 @@ router.get('/google', passport.authenticate('google',{
 
 router.get('/google/redirect',passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
     console.log(`you are logging in ${req.user.username}`)
-    return res.redirect('/protected/network')
+    return res.redirect('http://localhost:3000/protected/network')
 })
 
     // res.send('you reached the callback URL')
