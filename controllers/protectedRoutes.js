@@ -16,7 +16,7 @@ const isAuthed = (req, res, next) => {
 router.get('/', isAuthed,(req, res) => {
     res.send('profile')
     // res.send('you are logged in ' + req.user.username)
-    console.log('you are logged in ' + req.user.username)
+    console.log(`you are logged in ${ req.user.username}`)
 })
 
 
@@ -28,6 +28,15 @@ router.get('/network', isAuthed, function (req,res) {
     // res.send('what up!? its yo network page!')
 
     })
+
+router.get('/users', isAuthed, (req, res) => {
+  User.find({})
+  .then(doc => res.send(doc))
+})
+
+router.get('/matches', isAuthed, (req, res) => {
+  //find users that match what I need and send them back to display
+})
 
 
 
