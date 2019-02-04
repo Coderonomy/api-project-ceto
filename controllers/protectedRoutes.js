@@ -13,6 +13,8 @@ const isAuthed = (req, res, next) => {
     }
   }
 
+
+
   router.post('/user', (req,res) => {
     const {
         username,
@@ -57,10 +59,18 @@ router.get('/profile', isAuthed,(req, res) => {
 })
     
 router.get('/network', isAuthed, function (req,res) {
-    // User.find({})
-    // .then(doc => res.send(doc))
-    res.redirect(`${process.env.REACT_FRONT_END}/network`)
-    console.log(req.user)
+    User.findOne({email: req.user.email})
+    .then(doc => {
+        console.log(!doc.username)
+        if (!doc.username){
+            // console.log(doc.username)
+            return res.redirect(`${process.env.REACT_FRONT_END}/signup`)
+        } else {
+            // console.log(doc.username)
+            return res.redirect(`${process.env.REACT_FRONT_END}/network`)
+        }
+    })
+    .catch(err => console.log(err))
   })
 
 router.get('/users', isAuthed, (req, res) => {

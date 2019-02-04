@@ -14,41 +14,41 @@ router.get('/login', (req,res) =>{
     res.send('login')
 })
 
-//DB post test
-router.post('/user', (req,res) => {
-    const {
-        googleID,
-        username,
-        email,
-        isCeo,
-        isNetworker,
-        location,
-        remote, 
-        genderIdentity, 
-        bio,
-        pic,
-        ctoSpecifics,
-        ceoSpecifics
-    } = req.body
+// //DB post test
+// router.post('/user', (req,res) => {
+//     const {
+//         googleID,
+//         username,
+//         email,
+//         isCeo,
+//         isNetworker,
+//         location,
+//         remote, 
+//         genderIdentity, 
+//         bio,
+//         pic,
+//         ctoSpecifics,
+//         ceoSpecifics
+//     } = req.body
 
-    User.create({
-        googleID,
-        username,
-        email,
-        isCeo,
-        isNetworker,
-        location,
-        remote, 
-        genderIdentity, 
-        bio,
-        pic,
-        ctoSpecifics,
-        ceoSpecifics
-    },(err, doc) => {
-        console.log(err, doc)
-        return res.send(doc)
-    })
-})
+//     User.create({
+//         googleID,
+//         username,
+//         email,
+//         isCeo,
+//         isNetworker,
+//         location,
+//         remote, 
+//         genderIdentity, 
+//         bio,
+//         pic,
+//         ctoSpecifics,
+//         ceoSpecifics
+//     },(err, doc) => {
+//         console.log(err, doc)
+//         return res.send(doc)
+//     })
+// })
 
 module.exports = router;
 
