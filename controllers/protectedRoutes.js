@@ -4,10 +4,9 @@ const User = require('../models/User')
 
 const isAuthed = (req, res, next) => {
     if (!req.user) {
-      console.log(req.header)
         console.log('not authed')
     //  res.status(403).send('not authed');
-     return res.redirect('http://localhost:3000/login')
+     return res.redirect('auth/login')
     } else {
         console.log('authorized')
         next();
