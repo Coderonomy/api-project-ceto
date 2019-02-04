@@ -21,16 +21,14 @@ router.post('/user', (req,res) => {
         username,
         email,
         isCeo,
-        isCto,
         isNetworker,
         location,
-        openToRemoteConnections, 
+        remote, 
         genderIdentity, 
         bio,
         pic,
         ctoSpecifics,
-        ceoSpecifics,
-        message
+        ceoSpecifics
     } = req.body
 
     User.create({
@@ -38,16 +36,14 @@ router.post('/user', (req,res) => {
         username,
         email,
         isCeo,
-        isCto,
         isNetworker,
         location,
-        openToRemoteConnections, 
+        remote, 
         genderIdentity, 
         bio,
         pic,
         ctoSpecifics,
-        ceoSpecifics,
-        message 
+        ceoSpecifics
     },(err, doc) => {
         console.log(err, doc)
         return res.send(doc)
