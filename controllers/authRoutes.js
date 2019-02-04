@@ -14,6 +14,7 @@ router.get('/login', (req,res) =>{
 router.get('/logout',(req,res) =>{
     req.logout();
     res.redirect(process.env.REACT_FRONT_END)
+
 })
 
 //auth with google
@@ -23,7 +24,7 @@ router.get('/google', passport.authenticate('google',{
 
 router.get('/google/redirect',passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
     console.log(`you are logging in ${req.user.username}`)
-    return res.redirect('/protected/network')
+    return res.redirect('http://localhost:3000/protected/network')
 })
 
     // res.send('you reached the callback URL')

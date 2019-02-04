@@ -9,6 +9,8 @@ const protectedRoutes = require('./controllers/protectedRoutes');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 // const ejs = require('ejs');
+const multer = require('multer')
+const { uploadFile } = require('./utils/cloudinary')
 
 mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true });
 mongoose.connection.on('connected', () => {
@@ -20,6 +22,8 @@ mongoose.connection.on('error', () => {
 
 const app = new express();
 const port = process.env.PORT || 5000;
+const storage = multer.memoryStorage()
+const upload = multer({ storage })
 
 //ejs 
 // app.set('view engine', 'ejs')
@@ -50,5 +54,17 @@ app.get('/google131742fa08bd8639.html', (req, res) => {
   res.sendFile(`${__dirname}/google131742fa08bd8639.html`)
 });
 
+app.post('/upload', upload.single('file'), (req, res) => {
+  const { buffer } = req.file
+  // console.log(buffer)
+  uploadFile(buffer)
+      .then(resp => {
+          // console.log(resp.secure_url)
+          // const user = new User({ username: 'jon', profileAvatar: resp.secure_url })
+          // user.save(doc => res.send(doc))
+          res.send(resp)
+      })
+      .catch(err => res.status(500).send('There was an error with Cloudinary'))
+})
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
