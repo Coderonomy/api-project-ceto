@@ -5,7 +5,9 @@
     "DB_URL": "mongodb://projectCeto:project4Ceto@ds123454.mlab.com:23454/ceto",
     "GOOGLE_CLIENTID": "252563715372-gth723bdklga3j9p48bkfhjp72hb60n4.apps.googleusercontent.com",
     "GOOGLE_CLIENT_SECRET":"i8xCYYT5w0McT5vlbEJepCjk",
-    "COOKIE_KEY":"projectcetofff"
+    "COOKIE_KEY":"projectcetofff",
+    "REQUEST_ORIGIN":"https://ceto.netlify.com/",
+    "REACY_FRONT_END":"https://ceto.netlify.com/"
   },
   "version": 2,
   "builds" : [
