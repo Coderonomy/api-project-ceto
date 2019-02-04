@@ -40,7 +40,10 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use(cors())
+app.use(cors({
+  credentials: true,
+  origin: process.env.REACT_FRONT_END
+}));
 app.use(express.json());
 
 app.use('/auth', authRoutes);

@@ -34,7 +34,7 @@ passport.use(
                 // create user in our DB
                 // console.log(profile)
                 new User({
-                    username: profile.name.familyName,
+                    // username: profile.name.familyName,
                     googleId: profile.id,
                     email: profile.emails[0].value,
                     // gender: profile.gender
@@ -44,7 +44,5 @@ passport.use(
                 })  
             }
         })
-
-        
     })
 )
