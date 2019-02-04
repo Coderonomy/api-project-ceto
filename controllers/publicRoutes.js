@@ -6,7 +6,7 @@ const User = require('../models/User')
 
 //testing api
 router.get('/' ,(req,res) => {
-    res.send('home',{user:req.user})
+    res.send('home')
 })
 
 // auth login 
