@@ -6,7 +6,7 @@ const isAuthed = (req, res, next) => {
     if (!req.user) {
         console.log('not authed')
     //  res.status(403).send('not authed');
-     return res.redirect('auth/login')
+     return res.redirect(`${process.env.REACT_FRONT_END}/login`)
     } else {
         console.log('authorized')
         next();
@@ -20,11 +20,12 @@ router.get('/', isAuthed,(req, res) => {
 })
 
 
-router.get('/network', isAuthed,function (req,res) {
+router.get('/network', isAuthed, function (req,res) {
     // User.find({}, function (err,users) {
     //     res.json(users[0].username)    
     // console.log(users[0].username)
-    res.send('what up!? its yo network page!')
+    res.redirect(`${process.env.REACT_FRONT_END}/network`)
+    // res.send('what up!? its yo network page!')
 
     })
 
