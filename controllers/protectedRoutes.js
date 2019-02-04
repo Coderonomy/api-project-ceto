@@ -13,21 +13,55 @@ const isAuthed = (req, res, next) => {
     }
   }
 
-router.get('/', isAuthed,(req, res) => {
-    res.send('profile')
-    // res.send('you are logged in ' + req.user.username)
-    console.log(`you are logged in ${ req.user.username}`)
+  router.post('/user', (req,res) => {
+    const {
+        username,
+        isCeo,
+        isNetworker,
+        location,
+        remote, 
+        gender, 
+        bio,
+        pic,
+        ctoSpecifics,
+        ceoSpecifics
+    } = req.body
+
+    User.findOne({email: req.user.email}, function(err, doc) {
+        doc.username = username
+        doc.isCeo = isCeo
+        doc.isNetworker = isNetworker
+        doc.location = location
+        doc.remote = remote
+        doc.gender = gender
+        doc.bio = bio
+        doc.pic = pic
+        doc.ctoSpecifics = ctoSpecifics
+        doc.ceoSpecifics = ceoSpecifics
+        doc.save((err, doc) => {
+            console.log(err, doc)
+            return res.send(doc)
+        })
+
+    })
 })
 
 
-router.get('/network', isAuthed, function (req,res) {
-    // User.find({}, function (err,users) {
-    //     res.json(users[0].username)    
-    // console.log(users[0].username)
-    res.redirect(`${process.env.REACT_FRONT_END}/network`)
-    // res.send('what up!? its yo network page!')
+router.get('/', isAuthed,(req, res) => {
+    res.send('profile')
+    console.log(`you are logged in ${ req.user.username}`)
+})
 
-    })
+router.get('/profile', isAuthed,(req, res) => { 
+  res.send(req.user)
+})
+    
+router.get('/network', isAuthed, function (req,res) {
+    // User.find({})
+    // .then(doc => res.send(doc))
+    res.redirect(`${process.env.REACT_FRONT_END}/network`)
+    console.log(req.user)
+  })
 
 router.get('/users', isAuthed, (req, res) => {
   User.find({})
@@ -35,16 +69,26 @@ router.get('/users', isAuthed, (req, res) => {
 })
 
 router.get('/matches', isAuthed, (req, res) => {
+    User.findOne({email: req.user.email})
+    .then(doc => {
+        if (doc.isCeo) {
+            const skills = doc.specificTechRequired.concat(doc.generalTechRequired)
+            // skills.map()
+            User.find({isCeo: false})
+            .then(doc => {
+                res.send(doc)
+            })
+        } else if (!doc.isCeo) {
+            User.find({isCeo: true})
+            .then(doc => {
+                res.send(doc) })
+        } else {
+            res.send('fill out profile')
+        }
+    })
+    
   //find users that match what I need and send them back to display
+  
 })
 
-
-
-// router.get('/completed-profile', (req, res) => {
-//     res.send('have hit the complete-profile route, this is where we will add the logic to get the matches')
-// })
-
-// router.get('/incomplete-profile', (req, res) => {
-//     res.send('have hit the incomplete-profile route, this is because user has not completed enough form fields, will return only the top level data to profile, and prompt user to complete remaining fields')
-// })
 module.exports = router;
