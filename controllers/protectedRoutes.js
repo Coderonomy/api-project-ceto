@@ -13,8 +13,6 @@ const isAuthed = (req, res, next) => {
     }
   }
 
-
-
   router.post('/user', (req,res) => {
     const {
         username,
@@ -55,7 +53,12 @@ router.get('/', isAuthed,(req, res) => {
 })
 
 router.get('/profile', isAuthed,(req, res) => { 
-  res.send(req.user)
+
+  User.findOne({email: req.res.email})
+  .then(doc => {
+      console.log(doc)
+    res.send(req.user)
+  })
 })
     
 router.get('/network', isAuthed, function (req,res) {
