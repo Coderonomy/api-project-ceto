@@ -53,11 +53,10 @@ router.get('/', isAuthed,(req, res) => {
 })
 
 router.get('/profile', isAuthed,(req, res) => { 
-
-  User.findOne({email: req.res.email})
+  User.findOne({email: req.user.email})
   .then(doc => {
       console.log(doc)
-    res.send(req.user)
+      res.send(doc)
   })
 })
     
@@ -99,9 +98,6 @@ router.get('/matches', isAuthed, (req, res) => {
             res.send('fill out profile')
         }
     })
-    
-  //find users that match what I need and send them back to display
-  
 })
 
 module.exports = router;
