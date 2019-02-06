@@ -6,14 +6,14 @@ const isAuthed = (req, res, next) => {
     if (!req.user) {
         console.log('not authed')
     //  res.status(403).send('not authed');
-     return res.redirect(`${process.env.REACT_FRONT_END}/login`)
+     res.redirect(`${process.env.REACT_FRONT_END}/login`)
     } else {
         console.log('authorized')
         next();
     }
   }
 
-  router.post('/user', (req,res) => {
+  router.post('/user', isAuthed, (req,res) => {
     const {
         username,
         isCeo,
