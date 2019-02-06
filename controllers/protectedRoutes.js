@@ -53,10 +53,18 @@ router.get('/', isAuthed,(req, res) => {
 })
 
 router.get('/profile', isAuthed,(req, res) => { 
+<<<<<<< HEAD
   User.findOne({email: req.user.email})
   .then(doc => {
       console.log(doc)
       res.send(doc)
+=======
+
+  User.findOne({email: req.res.email})
+  .then(doc => {
+      console.log(doc)
+    res.send(req.user)
+>>>>>>> master
   })
 })
     
