@@ -3,14 +3,11 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const passportSetup = require('./config/passportSetup');
-const router = express.Router();
-const authRoutes = require('./controllers/authRoutes');
-const protectedRoutes = require('./controllers/protectedRoutes');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-// const ejs = require('ejs');
 const multer = require('multer')
 const { uploadFile } = require('./utils/cloudinary')
+// const ejs = require('ejs');
 
 mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true });
 mongoose.connection.on('connected', () => {
@@ -30,9 +27,7 @@ const upload = multer({ storage })
 
 //encrypts cookie for 24h
 app.use(cookieSession({
-  // name: 'session',
   maxAge: 24*60*60*1000,
-  //keys must be in array or it wont pass
   keys: [process.env.COOKIE_KEY]
 }))
 
@@ -46,8 +41,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.use('/auth', authRoutes);
-app.use('/protected', protectedRoutes);
 app.use(require('./controllers'));
 
 app.get('/google131742fa08bd8639.html', (req, res) => {
